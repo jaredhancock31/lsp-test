@@ -42,7 +42,7 @@ Run code-dot with debug logs to get some output when gathering refrences.
 ```
 
 Plug in the range info from the debug output into this static script to confirm
-a valid JSON repsonse. You just need the file path, line number, and ref_col for the starting point.
+a valid JSON repsonse. You just need the file path, line number (`ref_line`), and start character (`ref_col`) for the starting point.
 
 ```shell
 LOCAL_CLONE="<path to local clone>/marshmallow"
