@@ -32,15 +32,22 @@ pip install -r requirements.txt
 
 ## Example
 
-- Clone [marshmallow repo](https://github.com/marshmallow-code/marshmallow) locally
-- Run code-dot with debug logs to get some output when gathering refrences.
-- Plug in the range info from the debug output into this static script to confirm
-a valid JSON repsonse
+Clone [marshmallow repo](https://github.com/marshmallow-code/marshmallow) locally
+
+Run code-dot with debug logs to get some output when gathering refrences.
+
+```console
+2025-03-06 15:06:20,940 - DEBUG - code_graph.generator:428 - ref_file: tests/base.py, ref_line: 212, ref_col: 25, ref_end: 29
+2025-03-06 15:06:20,942 - WARNING - code_graph.generator:454 - Error verifying call from UserSchema: Unexpected response from Language Server: None
+```
+
+Plug in the range info from the debug output into this static script to confirm
+a valid JSON repsonse. You just need the file path, line number, and ref_col for the starting point.
 
 ```shell
 LOCAL_CLONE="<path to local clone>/marshmallow"
 
-python test_lsp.py $LOCAL_CLONE/tests/base.py 86 33
+python test_lsp.py $LOCAL_CLONE/tests/base.py 212 25
 ```
 
 Should get a valid JSON response:
@@ -51,38 +58,12 @@ Should get a valid JSON response:
     "uri": "file:///Users/jarhanco/code/github/marshmallow/tests/base.py",
     "range": {
       "start": {
-        "line": 12,
-        "character": 35
+        "line": 212,
+        "character": 25
       },
       "end": {
-        "line": 12,
-        "character": 50
-      }
-    }
-  },
-  {
-    "uri": "file:///Users/jarhanco/code/github/marshmallow/tests/base.py",
-    "range": {
-      "start": {
-        "line": 86,
-        "character": 18
-      },
-      "end": {
-        "line": 86,
-        "character": 33
-      }
-    }
-  },
-  {
-    "uri": "file:///Users/jarhanco/code/github/marshmallow/tests/base.py",
-    "range": {
-      "start": {
-        "line": 237,
-        "character": 18
-      },
-      "end": {
-        "line": 237,
-        "character": 33
+        "line": 212,
+        "character": 29
       }
     }
   }
