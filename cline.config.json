@@ -1,0 +1,11 @@
+{
+    "terminal": {
+        "autoClose": false,
+        "clearAfterExecution": false,
+        "waitForExit": false
+    },
+    "execution": {
+        "shell": true,
+        "detached": false
+    }
+}
